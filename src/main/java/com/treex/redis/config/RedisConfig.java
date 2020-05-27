@@ -1,7 +1,9 @@
 package com.treex.redis.config;
 
+import com.treex.redis.model.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -17,8 +19,9 @@ public class RedisConfig {
     }
 
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(JedisConnectionFactory jedisConnectionFactory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<>();
+    @DependsOn("redisConnectionFactory")
+    public RedisTemplate<String, User> redisTemplate(JedisConnectionFactory jedisConnectionFactory) {
+        RedisTemplate<String, User> template = new RedisTemplate<>();
         template.setConnectionFactory(jedisConnectionFactory);
         return template;
     }
