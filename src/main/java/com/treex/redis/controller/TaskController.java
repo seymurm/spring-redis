@@ -42,6 +42,7 @@ public class TaskController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void addTask(Principal principal) {
         User user = userRepository.findByUsername(principal.getName());
 
