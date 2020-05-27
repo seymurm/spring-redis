@@ -1,4 +1,4 @@
-package com.treex.redis;
+package co.treex.redis;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
